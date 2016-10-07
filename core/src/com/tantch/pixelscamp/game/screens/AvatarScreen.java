@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.tantch.pixelscamp.game.PxGame;
 import com.tantch.pixelscamp.game.entities.PxAvatar;
+import com.tantch.pixelscamp.game.entities.PxEnemy;
 import com.tantch.pixelscamp.game.screens.inputs.AvatarScreenInputProcessor;
 
 public class AvatarScreen implements Screen {
@@ -103,7 +104,7 @@ public class AvatarScreen implements Screen {
 
 	}
 
-	public void fight(PxAvatar enemy) {
+	public void fight(PxEnemy enemy) {
 		game.setScreen(new FightScreen(game,avatar,enemy));
 		
 	}

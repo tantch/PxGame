@@ -11,23 +11,37 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.tantch.pixelscamp.game.PxGame;
 import com.tantch.pixelscamp.game.entities.PxAvatar;
+import com.tantch.pixelscamp.game.entities.PxEnemy;
 import com.tantch.pixelscamp.game.screens.inputs.AvatarScreenInputProcessor;
 import com.tantch.pixelscamp.game.screens.inputs.FightScreenInputProcessor;
+
+import java.util.Random;
 
 public class FightScreen implements Screen {
 
 	final PxGame game;
 	OrthographicCamera camera;
 	private Viewport viewport;
-
-
+	
+	/*
+	 * trying out enemy
+	 */
+	Random r = new Random();
+	private float enemyAttTimer = 0;
+	private double nDelta = 0;
+	/*
+	 * end
+	 */
+	
+	
 	private PxAvatar avatar;
-	private PxAvatar enemy;
+	private PxEnemy enemy;
+	
 
     private ShapeRenderer shapeRenderer;
 	private BitmapFont font;
 
-	public FightScreen(PxGame game, PxAvatar avatar, PxAvatar enemy) {
+	public FightScreen(PxGame game, PxAvatar avatar, PxEnemy enemy) {
 		this.game = game;
 
 		this.avatar = avatar;
@@ -53,6 +67,8 @@ public class FightScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
+		
+		this.enemyAtt(delta);
 		Gdx.gl.glClearColor(0, 0.5f, 0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -138,6 +154,24 @@ public class FightScreen implements Screen {
 		System.out.println("enemy takes " + avatar.getAtk() + " damage; Curhp= " + enemy.getCurrentHP());
 
 		
+	}
+	
+	public void enemyAtt(float delta){
+		this.enemyAttTimer+=delta;	
+		
+		if(this.nDelta == 0){
+			double n = (r.nextInt(250)+75)/100.0;
+			System.out.println("nDelta: " + n);
+			this.nDelta = 1*n;
+		}
+		
+		if(this.enemyAttTimer > this.nDelta){
+			
+			System.out.println("Enemy attacking with delta: " + nDelta);
+			this.enemyAttTimer = 0;
+			this.takeDamage(this.enemy.getAtk());
+			this.nDelta = 0;
+		}
 	}
 
 }

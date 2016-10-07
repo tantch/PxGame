@@ -5,18 +5,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PxAvatar {
 
-	private String name;
-	private int attack;
-	private int defense;
+	protected String name;
+	protected int attack;
+	protected int defense;
 
-	private int currentHP;
-	private int maxHP;
-	private boolean alive;
+	protected int currentHP;
+	protected int maxHP;
+	protected boolean alive;
 	
-
-
-	private Texture face;
-
+	protected Texture face;
 
 	public PxAvatar(String name) {
 		this.name = name;
@@ -83,7 +80,7 @@ public class PxAvatar {
 
 	}
 
-	private void die() {
+	protected void die() {
 		this.alive = false;
 		
 	}
