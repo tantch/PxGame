@@ -24,7 +24,6 @@ public abstract class PxSkill {
 
 	
 	public abstract boolean useSkill(PxAvatar caster,PxAvatar target);
-	public abstract void loadSkill(FileHandle file);
 	
 	
 	

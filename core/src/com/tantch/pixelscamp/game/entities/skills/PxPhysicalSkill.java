@@ -28,6 +28,7 @@ public class PxPhysicalSkill extends PxSkill {
 		float totalDmg = this.baseDmg + this.attackMod * caster.getAtk();
 
 		target.receiveDamage(totalDmg);
+		System.out.println("target takes " + totalDmg + " damage;");
 
 		return true;
 	}
@@ -36,7 +37,7 @@ public class PxPhysicalSkill extends PxSkill {
 
 		String data = file.readString();
 
-		String[] dataLines = data.split("\n");
+		String[] dataLines = data.split("\\r?\\n");
 		String name = dataLines[0].split("#:")[1];
 		System.out.println("Name: " + name);
 		this.name =name;

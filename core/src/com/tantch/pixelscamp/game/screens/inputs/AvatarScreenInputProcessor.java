@@ -2,9 +2,11 @@ package com.tantch.pixelscamp.game.screens.inputs;
 
 import java.util.Random;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.tantch.pixelscamp.game.entities.PxAvatar;
 import com.tantch.pixelscamp.game.entities.PxEnemy;
+import com.tantch.pixelscamp.game.entities.skills.PxPhysicalSkill;
 import com.tantch.pixelscamp.game.screens.AvatarScreen;
 
 public class AvatarScreenInputProcessor implements InputProcessor {
@@ -41,11 +43,13 @@ public class AvatarScreenInputProcessor implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		
+
 		Random r = new Random();
 		int dif = r.nextInt(10) + 1;
+
 		PxEnemy enemy = new PxEnemy("Enemy", dif);
-		
+
+
 		System.out.println("change to fight screen");
 		screen.fight(enemy);
 		return true;

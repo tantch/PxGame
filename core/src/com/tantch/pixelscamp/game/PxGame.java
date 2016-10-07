@@ -15,9 +15,13 @@ public class PxGame extends Game {
 
 		this.batch = new SpriteBatch();
 
-		//hardcoded player
+		//hardcoded player 
+		//TODO load
 		
 		PxAvatar avatar = new PxAvatar("Psy"); 
+		PxPhysicalSkill punch = new PxPhysicalSkill();
+		punch.loadSkill(Gdx.files.internal("skills/RightPunch.pxskl"));
+		avatar.addSkill(punch);
 		
 		this.setScreen(new AvatarScreen(this,avatar));
 	}

@@ -1,5 +1,7 @@
 package com.tantch.pixelscamp.game.entities;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -12,8 +14,10 @@ public class PxAvatar {
 	protected int currentHP;
 	protected int maxHP;
 	protected boolean alive;
-	
+
 	protected Texture face;
+
+	protected HashMap<String, PxSkill> skills;
 
 	public PxAvatar(String name) {
 		this.name = name;
@@ -23,10 +27,8 @@ public class PxAvatar {
 		this.maxHP = 10;
 		this.currentHP = maxHP;
 		this.alive = true;
-
+		skills = new HashMap<String, PxSkill>();
 		face = new Texture("sprites/Face.png");
-
-
 
 	}
 
@@ -42,11 +44,11 @@ public class PxAvatar {
 		return defense;
 	}
 
-	
 	public int getMaxHP() {
 		return maxHP;
 	}
-	public int getCurrentHP(){
+
+	public int getCurrentHP() {
 		return currentHP;
 
 	}
@@ -70,11 +72,18 @@ public class PxAvatar {
 
 	}
 
+	public void addSkill(PxSkill skill) {
+
+		skills.put(skill.getName(), skill);
+		
+		System.out.println("added skill: "  + skill.getName());
+	}
+
 	public void receiveDamage(float damage) {
-		//TODO reduce with defense
-		currentHP-=damage;
-		if(currentHP<=0){
-			currentHP=0;
+		// TODO reduce with defense
+		currentHP -= damage;
+		if (currentHP <= 0) {
+			currentHP = 0;
 			die();
 		}
 
@@ -82,7 +91,16 @@ public class PxAvatar {
 
 	protected void die() {
 		this.alive = false;
-		
+
+	}
+
+	public PxSkill getSkill(String string) {
+		if (skills.containsKey(string)) {
+			return skills.get(string);
+		}
+		System.out.println("Error: skill :" +string + " does not exist");
+		return null;
+
 	}
 
 }
