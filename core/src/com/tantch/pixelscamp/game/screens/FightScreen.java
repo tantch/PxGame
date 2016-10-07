@@ -93,13 +93,13 @@ public class FightScreen implements Screen {
 	public void takeDamage(float damage){
 	
 		avatar.receiveDamage(damage);
-		System.out.println("avatar takes " +damage + " damage; Curhp= " + avatar.getCurHp());
+		System.out.println("avatar takes " +damage + " damage; Curhp= " + avatar.getCurrentHP());
 		
 	}
 	
-	public void attack(float damage){
-		enemy.receiveDamage(damage);
-		System.out.println("enemy takes " +damage + " damage; Curhp= " + enemy.getCurHp());
+	public void attack(){
+		enemy.receiveDamage(avatar.getAtk());
+		System.out.println("enemy takes " + avatar.getAtk() + " damage; Curhp= " + enemy.getCurrentHP());
 
 		
 	}

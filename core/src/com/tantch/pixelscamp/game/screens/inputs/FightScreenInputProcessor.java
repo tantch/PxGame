@@ -39,7 +39,7 @@ public class FightScreenInputProcessor implements InputProcessor {
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 
 		
-		screen.attack(10f);
+		screen.attack();
 		return true;
 	}
 
