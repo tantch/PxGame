@@ -15,7 +15,7 @@ public class PxGame extends Game {
 		
 		//hardcoded player
 		
-		PxAvatar avatar = new PxAvatar(); 
+		PxAvatar avatar = new PxAvatar("Psy"); 
 		this.setScreen(new AvatarScreen(this,avatar));
 	}
 

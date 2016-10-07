@@ -16,7 +16,6 @@ public class AvatarScreen implements Screen {
 
 	final PxGame game;
 	OrthographicCamera camera;
-	//Texture face;
     private Viewport viewport;
     
     private PxAvatar avatar;
@@ -34,7 +33,6 @@ public class AvatarScreen implements Screen {
         viewport = new FitViewport(640, 980, camera);
         
         
-		//face = new Texture("sprites/Face.png");
 		
 		Gdx.input.setInputProcessor(new AvatarScreenInputProcessor(this));
 
@@ -55,8 +53,7 @@ public class AvatarScreen implements Screen {
 		game.batch.setProjectionMatrix(camera.combined);
 
 		game.batch.begin();
-		//game.batch.draw(face, 250,400);
-		//player.draw(game.batch,250,400);
+		avatar.draw(game.batch,250,400);
 		game.batch.end();
 
 	}
