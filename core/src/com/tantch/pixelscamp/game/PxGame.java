@@ -1,8 +1,10 @@
 package com.tantch.pixelscamp.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.tantch.pixelscamp.game.entities.PxAvatar;
+import com.tantch.pixelscamp.game.entities.skills.PxPhysicalSkill;
 import com.tantch.pixelscamp.game.screens.AvatarScreen;
 
 public class PxGame extends Game {
@@ -16,7 +18,6 @@ public class PxGame extends Game {
 		//hardcoded player
 		
 		PxAvatar avatar = new PxAvatar("Psy"); 
-		
 		
 		this.setScreen(new AvatarScreen(this,avatar));
 	}
