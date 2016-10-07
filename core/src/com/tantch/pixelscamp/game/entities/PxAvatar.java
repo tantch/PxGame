@@ -11,10 +11,12 @@ public class PxAvatar {
 
 	private int currentHP;
 	private int maxHP;
+	private boolean alive;
 	
 
 
 	private Texture face;
+
 
 	public PxAvatar(String name) {
 		this.name = name;
@@ -23,6 +25,7 @@ public class PxAvatar {
 		this.defense = 0;
 		this.maxHP = 10;
 		this.currentHP = maxHP;
+		this.alive = true;
 
 		face = new Texture("sprites/Face.png");
 
@@ -51,7 +54,13 @@ public class PxAvatar {
 
 	}
 
+	public boolean isAlive() {
+		return alive;
+	}
 
+	public Texture getFace() {
+		return face;
+	}
 
 	public boolean incAtk(int value) {
 		// if (value < 0 && )
@@ -75,7 +84,7 @@ public class PxAvatar {
 	}
 
 	private void die() {
-		// TODO Auto-generated method stub
+		this.alive = false;
 		
 	}
 

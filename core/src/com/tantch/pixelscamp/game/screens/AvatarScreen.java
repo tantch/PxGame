@@ -66,7 +66,7 @@ public class AvatarScreen implements Screen {
 		game.batch.begin();
 		avatar.draw(game.batch,250,400);
 		font.draw(game.batch, this.avatar.getCurrentHP() + " / " + this.avatar.getMaxHP(), 250, 600);
-		font.draw(game.batch, "Attack: \n" + this.avatar.getAtk(), 200, 500);
+		font.draw(game.batch, "Attack: " + this.avatar.getAtk(), 200, 500);
 		font.draw(game.batch, "Defense: " + this.avatar.getDef(), 300, 500);
 		game.batch.end();
 
