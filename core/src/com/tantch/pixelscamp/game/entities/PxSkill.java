@@ -1,15 +1,33 @@
 package com.tantch.pixelscamp.game.entities;
 
-public class PxSkill {
+import com.badlogic.gdx.files.FileHandle;
+
+public abstract class PxSkill {
 	
-	private String name;
-	private float baseDmg;
-	private float AttackMod;
+	
+
+
+	protected String name;
 	
 	
 	public PxSkill(){
-		this.name = "RightHandPunch";
+		this.name = "empty";
+
 	}
+	
+	public String getName(){
+		
+		return name;
+		
+	
+	}
+
+	
+	public abstract boolean useSkill(PxAvatar caster,PxAvatar target);
+	
+	
+	
+	
 	
 	
 	

@@ -150,8 +150,8 @@ public class FightScreen implements Screen {
 	}
 	
 	public void attack(){
-		enemy.receiveDamage(avatar.getAtk());
-		System.out.println("enemy takes " + avatar.getAtk() + " damage; Curhp= " + enemy.getCurrentHP());
+		
+		avatar.getSkill("RightPunch").useSkill(avatar,enemy);
 
 		
 	}
