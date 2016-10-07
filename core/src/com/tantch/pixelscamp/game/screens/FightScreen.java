@@ -47,16 +47,15 @@ public class FightScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0, 0, 0.2f, 1);
+		Gdx.gl.glClearColor(0, 0.5f, 0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		camera.update();
 		game.batch.setProjectionMatrix(camera.combined);
 
 		game.batch.begin();
-		// game.batch.draw(face, 250,400);
-		// player.draw(game.batch,50,400);
-		//enemy.draw(game.batch,300,400);
+		avatar.draw(game.batch,100,400);
+		enemy.draw(game.batch,500,400);
 		game.batch.end();
 
 	}
@@ -93,9 +92,15 @@ public class FightScreen implements Screen {
 	
 	public void takeDamage(float damage){
 	
+		avatar.receiveDamage(damage);
+		System.out.println("avatar takes " +damage + " damage; Curhp= " + avatar.getCurHp());
+		
 	}
 	
 	public void attack(float damage){
+		enemy.receiveDamage(damage);
+		System.out.println("enemy takes " +damage + " damage; Curhp= " + enemy.getCurHp());
+
 		
 	}
 

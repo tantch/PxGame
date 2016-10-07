@@ -8,43 +8,66 @@ public class PxAvatar {
 	private String name;
 	private int attack;
 	private int defense;
-	private int totalHP;
+	private float curHp;
+	private float totalHp;
 	private Texture face;
-	
-	
-	public PxAvatar(String name){
+
+	public PxAvatar(String name) {
 		this.name = name;
-		
+
 		face = new Texture("sprites/Face.png");
 
+		attack = 10;
+		defense = 10;
+		totalHp = 16;
+		curHp = totalHp;
+
 	}
-	
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
-	
-	public int getAtk(){
+
+	public int getAtk() {
 		return attack;
 	}
-	
-	public int getDef(){
+
+	public int getDef() {
 		return defense;
 	}
-	
-	public int getTHP(){
-		return totalHP;
+
+	public float getTHp() {
+		return totalHp;
 	}
-	public boolean incAtk(int value){
-		//if (value < 0 && )
+	public float getCurHp() {
+		return curHp;
+	}
+
+
+	public boolean incAtk(int value) {
+		// if (value < 0 && )
 		return false;
 	}
-	
-	
-	public void draw(SpriteBatch batch, int i, int j){
-		
-		batch.draw(face, 250,400);
 
+	public void draw(SpriteBatch batch, int i, int j) {
+
+		batch.draw(face, i, j);
+
+	}
+
+	public void receiveDamage(float damage) {
+		//TODO reduce with defense
+		curHp-=damage;
+		if(curHp<=0){
+			curHp=0;
+			die();
+		}
+
+	}
+
+	private void die() {
+		// TODO Auto-generated method stub
 		
 	}
-	
+
 }

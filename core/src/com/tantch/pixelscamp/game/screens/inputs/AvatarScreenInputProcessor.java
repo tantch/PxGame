@@ -41,8 +41,8 @@ public class AvatarScreenInputProcessor implements InputProcessor {
 		
 		PxAvatar enemy = new PxAvatar("Enemy");
 		
+		System.out.println("change to fight screen");
 		screen.fight(enemy);
-		
 		return true;
 	}
 
