@@ -68,7 +68,9 @@ public class FightScreen implements Screen {
 	@Override
 	public void render(float delta) {
 		
-		this.enemyAtt(delta);
+		//enemy behaviour
+		if(this.enemy.isAlive() && this.avatar.isAlive()) this.enemyBehaviour(delta); 
+		
 		Gdx.gl.glClearColor(0, 0.5f, 0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -156,7 +158,7 @@ public class FightScreen implements Screen {
 		
 	}
 	
-	public void enemyAtt(float delta){
+	public void enemyBehaviour(float delta){
 		this.enemyAttTimer+=delta;	
 		
 		if(this.nDelta == 0){
@@ -165,12 +167,31 @@ public class FightScreen implements Screen {
 			this.nDelta = 1*n;
 		}
 		
+		
 		if(this.enemyAttTimer > this.nDelta){
 			
 			System.out.println("Enemy attacking with delta: " + nDelta);
 			this.enemyAttTimer = 0;
 			this.takeDamage(this.enemy.getAtk());
 			this.nDelta = 0;
+		}
+	}
+	
+	public void enemyAtt (){
+		
+		int n1 = r.nextInt(2);
+		
+		int n2 = r.nextInt(100)+1;
+		
+		
+		if(n2 > this.enemy.getDificulty()*10){
+			this.avatar.receiveDamage(this.enemy.getAtk());
+			System.out.println("Enemy uses normal attack.");
+		}
+		else{
+			//usar skill
+			this.avatar.receiveDamage(this.enemy.getAtk());
+			System.out.println("Enemy uses skill.");
 		}
 	}
 

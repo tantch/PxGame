@@ -12,7 +12,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.tantch.pixelscamp.game.PxGame;
-import com.tantch.pixelscamp.game.entities.PxAvatar;
+import com.tantch.pixelscamp.game.entities.PxAvatar; 
 import com.tantch.pixelscamp.game.entities.PxEnemy;
 import com.tantch.pixelscamp.game.screens.inputs.AvatarScreenInputProcessor;
 

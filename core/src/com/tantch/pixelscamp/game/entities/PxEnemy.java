@@ -18,8 +18,8 @@ public class PxEnemy extends PxAvatar
 	}
 	
 	public int changeDificulty( int dif){
-		if(dif < 10){
-			this.dificulty = 10;
+		if(dif > 8){
+			this.dificulty = 8;
 			
 			
 		} else if (dif < 1){
