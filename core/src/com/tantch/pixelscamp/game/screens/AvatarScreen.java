@@ -6,6 +6,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.tantch.pixelscamp.game.PxGame;
@@ -19,11 +22,14 @@ public class AvatarScreen implements Screen {
     private Viewport viewport;
     
     private PxAvatar avatar;
+    private ShapeRenderer shapeRenderer;
+	private BitmapFont font;
     
     public AvatarScreen(PxGame game,PxAvatar avatar) {
 		this.game = game;
 		this.avatar= avatar;
-		
+		this.shapeRenderer = new ShapeRenderer();
+		this.font = new BitmapFont();
 		
 		//camera nad res solutions
 		float w = Gdx.graphics.getWidth();                                      
@@ -52,8 +58,16 @@ public class AvatarScreen implements Screen {
 		camera.update();
 		game.batch.setProjectionMatrix(camera.combined);
 
+		shapeRenderer.begin(ShapeType.Filled);
+		shapeRenderer.setColor(0, 1, 0, 1);
+		shapeRenderer.rect(250, 600, 100, -10);
+		shapeRenderer.end();
+		
 		game.batch.begin();
 		avatar.draw(game.batch,250,400);
+		font.draw(game.batch, this.avatar.getCurrentHP() + " / " + this.avatar.getMaxHP(), 250, 600);
+		font.draw(game.batch, "Attack: \n" + this.avatar.getAtk(), 200, 500);
+		font.draw(game.batch, "Defense: " + this.avatar.getDef(), 300, 500);
 		game.batch.end();
 
 	}
@@ -84,6 +98,8 @@ public class AvatarScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
+
+		this.font.dispose();
 
 	}
 

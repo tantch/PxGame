@@ -8,13 +8,19 @@ public class PxAvatar {
 	private String name;
 	private int attack;
 	private int defense;
-	private int totalHP;
+	private int currentHP;
+	private int maxHP;
+	
+
 	private Texture face;
 	
 	
 	public PxAvatar(String name){
 		this.name = name;
-		
+		this.attack = 1;
+		this.defense = 0;
+		this.currentHP = 10;
+		this.maxHP = 10;
 		face = new Texture("sprites/Face.png");
 
 	}
@@ -31,8 +37,11 @@ public class PxAvatar {
 		return defense;
 	}
 	
-	public int getTHP(){
-		return totalHP;
+	public int getMaxHP() {
+		return maxHP;
+	}
+	public int getCurrentHP(){
+		return currentHP;
 	}
 	public boolean incAtk(int value){
 		//if (value < 0 && )
